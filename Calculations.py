@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 import scipy as sc
 
 '''THERMALLY PERFECT GAS ASSUMPTION'''
-# constants
-R = 287  # J/kgK
-
 
 ### Isentropic Flow Relations
 def isen(**kwargs):
@@ -124,6 +121,7 @@ def isen(**kwargs):
 
     return results
 
+
 ### Normal Shock Relations
 def norm_shock(**kwargs):
     gam = kwargs.get('gamma')
@@ -229,6 +227,7 @@ def norm_shock(**kwargs):
     }
 
     return results
+
 
 ### Oblique Shock Relations
 def oblique_shock(**kwargs):
@@ -389,13 +388,3 @@ def oblique_shock(**kwargs):
         'delS/R': properties['delS/R']
     }
     return results
-
-
-
-
-
-
-
-
-
-
