@@ -118,9 +118,9 @@ def isen(**kwargs):
 
     results = {
         'M': M,
-        'p0_p': (1 + ((gam - 1) / 2) * M ** 2) ** (gam / (gam - 1)),
-        'rho0 rho': (1 + ((gam - 1) / 2) * M ** 2) ** (1 / (gam - 1)),
-        'T0_T': 1 + ((gam - 1) / 2) * M ** 2,
+        'p0/p': (1 + ((gam - 1) / 2) * M ** 2) ** (gam / (gam - 1)),
+        'rho0/rho': (1 + ((gam - 1) / 2) * M ** 2) ** (1 / (gam - 1)),
+        'T0/T': 1 + ((gam - 1) / 2) * M ** 2,
         'Prandtl Meyer Angle (deg)': '' if M < 1 else (((np.sqrt((gam + 1) / (gam - 1))) * np.arctan(
             np.sqrt((M ** 2 - 1) * ((gam - 1) / (gam + 1)))) - np.arctan(np.sqrt(M ** 2 - 1))) * 180 / np.pi),
         'Mach Wave Angle (deg)': '' if M < 1 else np.arcsin(1 / M) * 180 / np.pi,

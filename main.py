@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import sympy as sp
 import Calculations as calc
 
 print("Compressible Flows Calculator by: Gaurav B\n")
@@ -15,6 +16,30 @@ def is_float(value):
         return False
 
 
+def isen_calc():
+    key = isen_dropdown_var.get()
+    value = isen_input_entry.get()
+    gam = gamma_entry.get()
+
+    if is_float(value):
+        value = float(value)
+    else:
+        raise ValueError("Input must be a number!")
+
+    if is_float(gam):
+        gam = float(gam)
+    else:
+        raise ValueError("Input must be a number!")
+
+    kwargs = {key:value,'gamma':gam}
+    isenDict = calc.isen(**kwargs)
+    out = []
+    for k,v in isenDict.items():
+        out.append(f"{k}:{v:.4f}")
+    isen_output_label.config(text="\n".join(out))
+
+
+
 
 root = tk.Tk()
 root.title("Compressible Flow Calculator")
@@ -25,13 +50,26 @@ oblique_shock_dropdown = ['M1n','M1','wave_angle_deg','M2n','M2','rho2_rho1','p2
 
 
 ##isen
-isen_select = tk.StringVar(root)
-isen_select.set('M')
+isen_frame = tk.Frame(root,bd=2,relief=tk.GROOVE,padx=10,pady=5)
+isen_frame.pack(pady=5,fill='x')
 
-dropdown_1 = tk.OptionMenu(root, isen_select, *isen_dropdown)
-dropdown_1_label = tk.Label(root,text='Isentropic Flow Relations')
-dropdown_1.pack(pady=20)
+isen_dropdown_var = tk.StringVar(value='M')
+isen_dropdown_menu = ttk.Combobox(isen_frame,textvariable=isen_dropdown_var,values=isen_dropdown)
+isen_dropdown_menu.pack(side='left',padx=5)
 
-input_1entry = tk.Entry(root)
-input_1entry.pack(pady=5)
-button = tk.Button(root, text="calculate", command=calc)
+isen_input_entry = tk.Entry(isen_frame, width=10)
+isen_input_entry.pack(side="left", padx=5)
+
+gamma_label = tk.Label(isen_frame, text='Gamma: ')
+gamma_label.pack(side='left',padx=5)
+gamma_entry = tk.Entry(isen_frame,width=10)
+gamma_entry.pack(side='left',padx=5)
+
+
+isen_output_label = tk.Label(root, text=f"Outputs will appear here.", wraplength=400, justify="left", bg="lightgray")
+isen_output_label.pack(pady=5, fill="x")
+
+isen_button = tk.Button(root, text="calculate", command=isen_calc)
+isen_button.pack(pady=10)
+
+root.mainloop()
