@@ -12,7 +12,7 @@ from numpy import sin, cos, tan
 
 '''THERMALLY PERFECT GAS ASSUMPTION'''
 # constants
-R = 287  # J/kgK
+#R = 287  # J/kgK
 
 
 ### Isentropic Flow Relations
@@ -534,4 +534,4 @@ def oblique_shock(**kwargs):
 
 
 # print(calc_M1_M1n(53.42294052722865, 20.0))
-print(oblique_shock(M1=2.0, del_deg=20, gamma=1.4, Strong_Solution=True))
+#print(oblique_shock(M1=2.0, del_deg=20, gamma=1.4, Strong_Solution=True))
