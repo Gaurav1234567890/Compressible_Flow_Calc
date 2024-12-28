@@ -6,7 +6,7 @@ Created on Thu Dec 19 15:28:01 2024
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
+
 import scipy as sc
 from numpy import sin, cos, tan
 
@@ -72,7 +72,7 @@ def isen(**kwargs):
             return x * np.sqrt((gam + 1) / (gam - 1)) * np.sqrt((gam - 1) * (x ** 2 - 1) / (gam + 1)) / (
                     (x ** 2 - 1) * ((gam - 1) * (x ** 2 - 1) / (gam + 1) + 1)) - 1 / (x * np.sqrt(x ** 2 - 1))
 
-        x0 = 1.0
+        x0 = 1.5
         M = sc.optimize.newton(f, x0, df)
         return M
 
