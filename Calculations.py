@@ -408,6 +408,7 @@ def oblique_shock(**kwargs):
                 'del_deg': (180 / np.pi) * delta,
                 'wave_angle_deg': (180 / np.pi) * beta
             }
+        print(beta)
         return tmp
 
     def calc_M1_delta(M1n, wave_angle_deg):
